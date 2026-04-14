@@ -1,3 +1,4 @@
+import { useRouter } from 'expo-router';
 import React from 'react';
 import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
@@ -27,9 +28,13 @@ const colecoesOnePiece = [
 ];
 
 export default function TelaProdutos() {
+  const router = useRouter();
 
   const renderizarItem = ({ item }) => (
-    <TouchableOpacity style={styles.cartaoProduto}>
+    <TouchableOpacity 
+      style={styles.cartaoProduto} 
+      onPress={() => router.push('/detalhes')}
+    >
       {/* 🖼️ Nova imagem adicionada aqui */}
       <Image source={{ uri: item.imagem }} style={styles.imagemBooster} />
       
