@@ -1,45 +1,15 @@
-// Exportamos a constante para poder "puxar" ela em outras telas
+// Base de Dados Real do Set OP-01: Romance Dawn
+
 export const cartasOnePiece = [
-  { 
-    id: 'OP01-001', 
-    nome: 'Roronoa Zoro', 
-    preco: 'R$250.00', 
-    cor: 'Vermelho/Verde', 
-    imagem: 'https://limitlesstcg.s3.us-east-2.amazonaws.com/one-piece/op01/op01-001_en.webp' 
-  },
-  { 
-    id: 'OP01-025', 
-    nome: 'Roronoa Zoro (Personagem)', 
-    preco: 'R$5.96', 
-    cor: 'Verde', 
-    imagem: 'https://limitlesstcg.s3.us-east-2.amazonaws.com/one-piece/op01/op01-025_en.webp' 
-  },
-  { 
-    id: 'OP01-047', 
-    nome: 'Trafalgar Law', 
-    preco: 'R$22.18', 
-    cor: 'Azul', 
-    imagem: 'https://limitlesstcg.s3.us-east-2.amazonaws.com/one-piece/op01/op01-047_en.webp' 
-  },
-  { 
-    id: 'OP02-018', 
-    nome: 'Marco', 
-    preco: 'R$90.00', 
-    cor: 'Vermelho', 
-    imagem: 'https://limitlesstcg.s3.us-east-2.amazonaws.com/one-piece/op02/op02-018_en.webp' 
-  },
-  { 
-    id: 'OP03-099', 
-    nome: 'Kaku', 
-    preco: 'R$0.20', 
-    cor: 'Preto', 
-    imagem: 'https://limitlesstcg.s3.us-east-2.amazonaws.com/one-piece/op03/op03-099_en.webp' 
-  },
-  { 
-    id: 'ST01-012', 
-    nome: 'Monkey.D.Luffy', 
-    preco: 'R$1.50', 
-    cor: 'Vermelho', 
-    imagem: 'https://limitlesstcg.s3.us-east-2.amazonaws.com/one-piece/st01/st01-012_en.webp' 
-  },
+  { id: 'OP01-001', nome: 'Roronoa Zoro (Leader Parallel)', preco: 'R$1,450.00', cor: 'Vermelho', imagem: 'https://tcgplayer-cdn.tcgplayer.com/product/454605_200w.jpg' },
+  { id: 'OP01-002', nome: 'Monkey.D.Luffy (SR Parallel)', preco: 'R$480.00', cor: 'Vermelho', imagem: 'https://tcgplayer-cdn.tcgplayer.com/product/476837_200w.jpg' },
+  { id: 'OP01-003', nome: 'Roronoa Zoro (SR)', preco: 'R$25.00', cor: 'Vermelho', imagem: 'https://tcgplayer-cdn.tcgplayer.com/product/454607_200w.jpg' },
+  { id: 'OP01-004', nome: 'Sanji (L)', preco: 'R$1.15', cor: 'Vermelho', imagem: 'https://tcgplayer-cdn.tcgplayer.com/product/454608_200w.jpg' },
+  { id: 'OP01-005', nome: 'Usopp (R Parallel)', preco: 'R$210.00', cor: 'Vermelho', imagem: 'https://tcgplayer-cdn.tcgplayer.com/product/476839_200w.jpg' },
+  { id: 'OP01-006', nome: 'Otama (UC)', preco: 'R$0.50', cor: 'Vermelho', imagem: 'https://tcgplayer-cdn.tcgplayer.com/product/454611_200w.jpg' },
+  { id: 'OP01-016', nome: 'Nami (Parallel Rare)', preco: 'R$680.00', cor: 'Vermelho', imagem: 'https://tcgplayer-cdn.tcgplayer.com/product/476841_200w.jpg' },
+  { id: 'OP01-017', nome: 'Brook (Parallel Rare)', preco: 'R$190.00', cor: 'Vermelho', imagem: 'https://tcgplayer-cdn.tcgplayer.com/product/476842_200w.jpg' },
+  { id: 'OP01-025', nome: 'Roronoa Zoro (Common)', preco: 'R$0.25', cor: 'Vermelho', imagem: 'https://tcgplayer-cdn.tcgplayer.com/product/454613_200w.jpg' },
+  { id: 'OP01-120', nome: 'Shanks (SEC Parallel)', preco: 'R$1,890.00', cor: 'Vermelho', imagem: 'https://tcgplayer-cdn.tcgplayer.com/product/476836_200w.jpg' },
+  { id: 'OP01-121', nome: 'Yamato (SEC Parallel)', preco: 'R$1,200.00', cor: 'Verde', imagem: 'https://tcgplayer-cdn.tcgplayer.com/product/476840_200w.jpg' },
 ];

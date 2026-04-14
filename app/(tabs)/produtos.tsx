@@ -2,29 +2,13 @@ import { useRouter } from 'expo-router';
 import React from 'react';
 import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-// 📦 Nosso Banco de Dados com Imagens (URLs provisórias)
+// 🏴‍☠️ Base de Dados Real de Coleções de One Piece
 const colecoesOnePiece = [
-  { 
-    id: '1', 
-    nome: "Adventure on KAMI's Island", 
-    codigo: 'OP15', 
-    sigla: 'OP15-EB04',
-    imagem: 'https://tcgplayer-cdn.tcgplayer.com/product/544321_200w.jpg' 
-  },
-  { 
-    id: '2', 
-    nome: 'Heroines Edition', 
-    codigo: 'EB03', 
-    sigla: 'EB03',
-    imagem: 'https://tcgplayer-cdn.tcgplayer.com/product/544318_200w.jpg' 
-  },
-  { 
-    id: '3', 
-    nome: "The Azure Sea's Seven", 
-    codigo: 'OP14', 
-    sigla: 'OP14-EB04',
-    imagem: 'https://tcgplayer-cdn.tcgplayer.com/product/544320_200w.jpg' 
-  },
+  { id: 'OP01', nome: 'Romance Dawn', sigla: 'OP-01', imagem: 'https://tcgplayer-cdn.tcgplayer.com/product/282241_200w.jpg' },
+  { id: 'OP02', nome: 'Paramount War', sigla: 'OP-02', imagem: 'https://tcgplayer-cdn.tcgplayer.com/product/454593_200w.jpg' },
+  { id: 'OP03', nome: 'Pillars of Strength', sigla: 'OP-03', imagem: 'https://tcgplayer-cdn.tcgplayer.com/product/476831_200w.jpg' },
+  { id: 'OP04', nome: 'Kingdoms of Intrigue', sigla: 'OP-04', imagem: 'https://tcgplayer-cdn.tcgplayer.com/product/490483_200w.jpg' },
+  { id: 'EB01', nome: 'Memorial Collection', sigla: 'EB-01', imagem: 'https://tcgplayer-cdn.tcgplayer.com/product/544315_200w.jpg' },
 ];
 
 export default function TelaProdutos() {
@@ -35,7 +19,6 @@ export default function TelaProdutos() {
       style={styles.cartaoProduto} 
       onPress={() => router.push('/detalhes')}
     >
-      {/* 🖼️ Nova imagem adicionada aqui */}
       <Image source={{ uri: item.imagem }} style={styles.imagemBooster} />
       
       <View style={styles.infoProduto}>
