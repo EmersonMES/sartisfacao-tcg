@@ -1,98 +1,97 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import { CameraView, useCameraPermissions } from 'expo-camera';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-import { HelloWave } from '@/components/hello-wave';
-import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { Link } from 'expo-router';
+export default function TelaScanner() {
+  // Aqui nós gerenciamos a permissão de hardware
+  const [permissao, pedirPermissao] = useCameraPermissions();
 
-export default function HomeScreen() {
+  // 1. O aplicativo ainda está checando se tem permissão
+  if (!permissao) {
+    return <View style={styles.container} />;
+  }
+
+  // 2. O usuário ainda não deu permissão
+  if (!permissao.granted) {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.texto}>O Sartisfação TCG precisa de acesso à câmera para escanear suas cartas.</Text>
+        <TouchableOpacity style={styles.botao} onPress={pedirPermissao}>
+          <Text style={styles.textoBotao}>Liberar Câmera</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
+
+  // 3. Permissão concedida! Mostramos a câmera
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <Link href="/modal">
-          <Link.Trigger>
-            <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-          </Link.Trigger>
-          <Link.Preview />
-          <Link.Menu>
-            <Link.MenuAction title="Action" icon="cube" onPress={() => alert('Action pressed')} />
-            <Link.MenuAction
-              title="Share"
-              icon="square.and.arrow.up"
-              onPress={() => alert('Share pressed')}
-            />
-            <Link.Menu title="More" icon="ellipsis">
-              <Link.MenuAction
-                title="Delete"
-                icon="trash"
-                destructive
-                onPress={() => alert('Delete pressed')}
-              />
-            </Link.Menu>
-          </Link.Menu>
-        </Link>
+    <View style={styles.container}>
+      <CameraView style={styles.camera} facing="back">
+        
+        {/* Camada transparente por cima da câmera para desenhar a mira */}
+        <View style={styles.overlay}>
+          <View style={styles.miraCarta} />
+          <Text style={styles.textoMira}>Alinhe a carta dentro do quadro</Text>
+        </View>
 
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+      </CameraView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
+  container: {
+    flex: 1,
+    backgroundColor: '#121212',
+    justifyContent: 'center',
+  },
+  texto: {
+    textAlign: 'center',
+    color: '#fff',
+    marginBottom: 20,
+    fontSize: 16,
+    paddingHorizontal: 20,
+  },
+  botao: {
+    backgroundColor: '#2196F3', // Azul padrão Logia
+    padding: 15,
+    borderRadius: 10,
+    marginHorizontal: 50,
     alignItems: 'center',
-    gap: 8,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  textoBotao: {
+    color: '#fff',
+    fontWeight: 'bold',
+    fontSize: 16,
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+  camera: {
+    flex: 1,
   },
+  overlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.4)', // Escurece o fundo levemente
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  miraCarta: {
+    width: 250,
+    height: 350,
+    borderWidth: 3,
+    borderColor: '#2196F3',
+    borderRadius: 15,
+    backgroundColor: 'transparent',
+    // 'vaza' o fundo escuro para destacar apenas o meio
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.8,
+    shadowRadius: 100,
+  },
+  textoMira: {
+    color: '#fff',
+    marginTop: 20,
+    fontSize: 16,
+    fontWeight: 'bold',
+    textShadowColor: 'rgba(0, 0, 0, 0.75)',
+    textShadowOffset: { width: -1, height: 1 },
+    textShadowRadius: 10
+  }
 });
