@@ -2,15 +2,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
 import { FlatList, Image, Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-
-const cartasIniciais = [
-  { id: '1', nome: 'Trafalgar Law', preco: 'R$22.18', cor: 'Azul', imagem: 'https://tcgplayer-cdn.tcgplayer.com/product/544321_200w.jpg' },
-  { id: '2', nome: 'Marco', preco: 'R$90.00', cor: 'Azul', imagem: 'https://tcgplayer-cdn.tcgplayer.com/product/544318_200w.jpg' },
-  { id: '3', nome: 'Monkey.D.Luffy', preco: 'R$1.50', cor: 'Vermelho', imagem: 'https://tcgplayer-cdn.tcgplayer.com/product/544320_200w.jpg' },
-  { id: '4', nome: 'Kaku', preco: 'R$0.20', cor: 'Preto', imagem: 'https://tcgplayer-cdn.tcgplayer.com/product/544321_200w.jpg' },
-  { id: '5', nome: 'Monkey.D.Luffy (V)', preco: 'R$2.51', cor: 'Vermelho', imagem: 'https://tcgplayer-cdn.tcgplayer.com/product/544318_200w.jpg' },
-  { id: '6', nome: 'Roronoa Zoro', preco: 'R$5.96', cor: 'Verde', imagem: 'https://tcgplayer-cdn.tcgplayer.com/product/544320_200w.jpg' },
-];
+import { cartasOnePiece } from '../dados/cartasOnePiece';
 
 export default function TelaDetalhes() {
   const router = useRouter();
@@ -21,7 +13,7 @@ export default function TelaDetalhes() {
   const [ordenacao, setOrdenacao] = useState('ID'); // ID, Maior Preço, Menor Preço
 
   // ⚙️ Motor de Processamento (Filtro + Ordenação)
-  const cartasExibidas = [...cartasIniciais]
+  const cartasExibidas = [...cartasOnePiece]
     .filter((carta) => corSelecionada === 'Todas' || carta.cor === corSelecionada)
     .sort((a, b) => {
       if (ordenacao === 'ID') return 0; // Mantém a ordem original
@@ -60,7 +52,7 @@ export default function TelaDetalhes() {
       <View style={styles.cabecalho}>
         <Text style={styles.textoValor}>Valor da sua coleção</Text>
         <Text style={styles.valorTotal}>R$122.35</Text>
-        <Text style={styles.textoCards}>Exibindo {cartasExibidas.length} de {cartasIniciais.length}</Text>
+        <Text style={styles.textoCards}>Exibindo {cartasExibidas.length} de {cartasOnePiece.length}</Text>
       </View>
 
       <FlatList
